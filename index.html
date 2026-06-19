@@ -4,66 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: sans-serif; }
-        .container { display: none; text-align: center; }
-        .container.active { display: block; }
-        
-        /* Cinematic Scrolling Credits */
-        .scroll-container { height: 300px; overflow: hidden; position: relative; width: 100%; }
-        .scrolling-credits { position: absolute; width: 100%; animation: scrollUp 15s linear forwards; }
-        @keyframes scrollUp {
-            0% { top: 100%; opacity: 1; }
-            80% { opacity: 1; }
-            100% { top: -100%; opacity: 0; }
-        }
-        
+        body { margin: 0; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-family: sans-serif; background-color: #ffe6eb; overflow: hidden; }
+        .container { display: none; }
+        .active { display: block; }
+        .heart { position: absolute; top: -10px; color: #ff3366; font-size: 20px; animation: fall linear infinite; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(100vh); } }
+        /* Blood Red Allison Font */
+        #typewriter-text { font-family: 'Allison', cursive; color: #8A0303; font-size: 3rem; }
         .btn { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
     </style>
 </head>
 <body>
 
+    <div id="hearts-container"></div>
+
     <div id="screen-1" class="container active">
-        <h1>For you my puchuu... ✨</h1>
+        <h1>Hey You! ✨</h1>
         <p>A little birthday surprise is waiting for you.</p>
-        <button class="btn" onclick="goToScreen2()">🎁 Click Me</button>
+        <div onclick="goToScreen2()" style="cursor:pointer; font-size: 50px;">🎁</div>
     </div>
 
     <div id="screen-2" class="container">
-        <div class="scroll-container">
-            <div class="scrolling-credits">
-                <h1>Happy Birthday!</h1>
-                <p>To the most amazing person in my life. Every day spent with you is a gift I cherish, but today is extra special because it's the day the world was blessed with your beautiful soul. Thank you for filling my days with so much love, laughter, and light. I promise to keep celebrating you not just today, but every single day. You mean the world to me!</p>
-            </div>
-        </div>
-        <audio id="bg-music" loop>
-            <source src="music.mp3" type="audio/mpeg">
-        </audio>
-        <button id="next-btn" class="btn" style="display:none;" onclick="goToScreen3()">See Next Surprise</button>
+        <h1 id="typewriter-text">Happy Birthday!</h1>
+        <button id="next-btn" style="display:none;" onclick="goToScreen3()">See Next Surprise</button>
     </div>
 
     <div id="screen-3" class="container">
         <h1>Made This For You!</h1>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/xWB-8vI3PBU" frameborder="0" allowfullscreen></iframe>
+        <div style="width: 100%; max-width: 400px;">
+            <video width="100%" controls>
+                <source src="YOUR_VIDEO_FILE.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 
     <script>
+        // Heart Animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
+
+        // Screen Transitions
         function goToScreen2() {
             document.getElementById('screen-1').classList.remove('active');
             document.getElementById('screen-2').classList.add('active');
-            document.getElementById('bg-music').play();
-            
-            // Show "Next" button after 15 seconds (when animation ends)
-            setTimeout(function() {
-                document.getElementById('next-btn').style.display = 'inline-block';
-            }, 15000);
+            typeText("Happy Birthday to my favorite person!", document.getElementById('typewriter-text'));
         }
 
         function goToScreen3() {
             document.getElementById('screen-2').classList.remove('active');
             document.getElementById('screen-3').classList.add('active');
         }
+
+        // Typewriter Effect
+        function typeText(text, element) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                } else {
+                    document.getElementById('next-btn').style.display = 'inline-block';
+                }
+            }
+            type();
+        }
     </script>
 </body>
-</html>
-
+</html/>

@@ -28,7 +28,10 @@
 
     <div id="screen-2" class="container">
         <h1 id="typewriter-text">Happy Birthday!</h1>
-        <button id="next-btn" style="display:none;" onclick="goToScreen3()">See Next Surprise</button>
+      <audio id="bg-music" loop>
+        <source src="https://getsnap.link/aeu58851Z1Z" type="audio/mpeg">
+ 
+       <button id="next-btn" style="display:none;" onclick="goToScreen3()">See Next Surprise</button>
     </div>
 
     <div id="screen-3" class="container">
@@ -61,7 +64,10 @@
     document.getElementById('screen-1').classList.remove('active');
     document.getElementById('screen-2').classList.add('active');
     
+ // Start music
+    document.getElementById('bg-music').play();
     // Updated long, meaningful message
+
     typeText("Happy Birthday to the most amazing person in my life. Every day spent with you is a gift I cherish, but today is extra special because it’s the day the world was blessed with your beautiful soul. Thank you for filling my days with so much love, laughter, and light. I promise to keep celebrating you not just today, but every single day. You mean the world to me, and I hope this year brings you as much happiness as you bring to everyone around you.", document.getElementById('typewriter-text'));
 }
 

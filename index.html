@@ -1,30 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-family: sans-serif; background-color: #ffe6eb; overflow: hidden; }
+        .container { display: none; }
+        .active { display: block; }
         .heart { position: absolute; top: -10px; color: #ff3366; font-size: 20px; animation: fall linear infinite; pointer-events: none; }
         @keyframes fall { to { transform: translateY(100vh); } }
-        #music-control { margin-top: 20px; }
+        /* Blood Red Allison Font */
+        #typewriter-text { font-family: 'Allison', cursive; color: #8A0303; font-size: 3rem; }
+        .btn { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <h1>Happy Birthday!</h1>
-    <p>This is your special surprise.</p>
-    
-    <div id="music-control">
-        <audio autoplay loop id="bg-music">
-            <source src="https://getsnap.link/aeu58851Z1Z" type="audio/mpeg">
-        </audio>
+    <div id="hearts-container"></div>
+
+    <div id="screen-1" class="container active">
+        <h1> For you my puchuu.... ✨</h1>
+        <p>A little birthday surprise is waiting for you.</p>
+        <div onclick="goToScreen2()" style="cursor:pointer; font-size: 50px;">🎁</div>
+    </div>
+
+    <div id="screen-2" class="container">
+        <h1 id="typewriter-text">Happy Birthday!</h1>
+        <button id="next-btn" style="display:none;" onclick="goToScreen3()">See Next Surprise</button>
+    </div>
+
+    <div id="screen-3" class="container">
+        <h1>Made This For You!</h1>
+        <div style="width: 100%; max-width: 400px;">
+            <video width="100%" controls>
+                <source src="YOUR_VIDEO_FILE.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 
     <script>
-        // Falling Hearts Animation
+        // Heart Animation
         function createHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';
@@ -35,6 +52,34 @@
             setTimeout(() => heart.remove(), 5000);
         }
         setInterval(createHeart, 500);
+
+        // Screen Transitions
+        function goToScreen2() {
+            document.getElementById('screen-1').classList.remove('active');
+            document.getElementById('screen-2').classList.add('active');
+            typeText("Happy Birthday to my favorite person!", document.getElementById('typewriter-text'));
+        }
+
+        function goToScreen3() {
+            document.getElementById('screen-2').classList.remove('active');
+            document.getElementById('screen-3').classList.add('active');
+        }
+
+        // Typewriter Effect
+        function typeText(text, element) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                } else {
+                    document.getElementById('next-btn').style.display = 'inline-block';
+                }
+            }
+            type();
+        }
     </script>
 </body>
 </html>
+

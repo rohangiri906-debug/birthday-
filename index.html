@@ -1,351 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday! 💖</title>
+    <title>Happy Birthday!</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-           body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-    font-family: sans-serif;
-    line-height: 1.6;
-    margin: 0;
-}
-
-
-
-        /* Floating Hearts Background */
-        .hearts-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .heart {
-            position: absolute;
-            bottom: -10%;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.6);
-            animation: float Up 6s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* App Containers */
-        .container {
-            width: 90%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 2;
-            transition: all 0.6s ease-in-out;
-            display: none;
-        }
-
-        .active {
-            display: block;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        /* Buttons */
-        .btn {
-            background: #ffffff;
-            color: #ff758c;
-            border: none;
-            padding: 12px 28px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        /* Screen 1 specific */
-        .gift-box {
-            font-size: 80px;
-            cursor: pointer;
-            animation: pulse 1.5s infinite;
-            margin: 20px 0;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        /* Screen 2 specific: Typewriter frame */
-        .letter-box {
-            /* Elegant Font */
-       body {
-           font-family: 'Dancing Script', cursive; /* A romantic, handwritten font */
-           background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-           overflow: hidden; /* Keeps hearts within the screen */
-        }
-
-        /* Falling Heart Animation */
-        .heart {
-            position: absolute;
-            top: -10px;
-            color: #ff3366;
-            font-size: 20px;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(100vh); }
-        }
-
-        }
-
-        /* Screen 3 specific: Video player frame */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            background: #000;
-        }
-
-        /* Hidden audio element */
-        audio {
-            display: none;
-        }
-       // Falling Hearts Animation
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.innerHTML = '❤️';
-    heart.className = 'heart';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-  }
-      setInterval(createHeart, 500);
- .heart {
-    position: absolute;
-    top: -10px;
-    color: #ff3366;
-    font-size: 20px;
-    animation: fall linear infinite;
-    pointer-events: none;
-}
-
-@keyframes fall {
-    to { transform: translateY(100vh); }
-}
-
-    // ... your existing code ...
-    function goToScreen3() {
-        // ... existing code ...
-    }
-
-    // Falling Hearts Animation
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.innerHTML = '❤️';
-        heart.className = 'heart';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-    }
-    setInterval(createHeart, 500);
-
-
+        body { margin: 0; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-family: sans-serif; background-color: #ffe6eb; overflow: hidden; }
+        .heart { position: absolute; top: -10px; color: #ff3366; font-size: 20px; animation: fall linear infinite; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(100vh); } }
+        #music-control { margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- Audio Element for Birthday Song -->
-    <!-- Put your music file name here (e.g., music.mp3) or keep the placeholder URL -->
-    <audio autoplay loop>
-  <source src="https://getsnap.link/aeu58851Z1Z" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-
-    <div class="hearts-bg" id="hearts-container"></div>
-
-    <!-- SCREEN 1: THE ENTRANCE -->
-    <div class="container active" id="screen-1">
-        <h1>Hey You! ✨</h1>
-        <p>A little birthday surprise is waiting for you inside. Tap the gift to open it!</p>
-        <div class="gift-box" onclick="goToScreen2()">🎁</div>
-    </div>
-
-    <!-- SCREEN 2: THE HEARTFELT LETTER -->
-    <div class="container" id="screen-2">
-        <h1>Happy Birthday! 🎂</h1>
-        <div class="letter-box">
-            <p id="typewriter-text"></p>
-        </div>
-        <button class="btn" id="next-btn" style="display: none;" onclick="goToScreen3()">See Next Surprise ➡️</button>
-    </div>
-
-    <!-- SCREEN 3: THE VIDEO CELEBRATION -->
-    <div class="container" id="screen-3">
-        <h1>Made This For You 🎬</h1>
-        <p>Here is a little piece of my heart wrapped up into a video:</p>
-
-        <div class="video-wrapper">
-            <!-- Put your video file name here (e.g., birthday_video.mp4) -->
-            <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);"><iframe src="https://www.youtube.com/embed/xWB-8vI3PBU?autoplay=1&rel=0&playsinline=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-                <iframe src="https://www.youtube.com/embed/xWB-8vI3PBU?autoplay=1&rel=0&playsinline=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-
-            </div>
-
-        <p style="font-size: 0.9rem; font-style: italic;">I hope your day is as beautiful as you are! ❤️</p>
+    <h1>Happy Birthday!</h1>
+    <p>This is your special surprise.</p>
+    
+    <div id="music-control">
+        <audio autoplay loop id="bg-music">
+            <source src="https://getsnap.link/aeu58851Z1Z" type="audio/mpeg">
+        </audio>
     </div>
 
     <script>
-        // Letter Content (Option 1)
-        const message = "Happy Birthday to the most incredible person in my life. Knowing you and having you by my side has brought so much warmth and happiness into my world. Every conversation, every shared laugh, and every quiet moment with you is something I deeply cherish.\n\nYou have this beautiful way of making everything brighter just by being yourself. Today is all about celebrating the amazing person you are, and I hope this year brings you as much joy as you give to everyone around you. \n\nCheers to you, to today, and to many more beautiful memories together. ❤️";
-
-        // Generate Floating Hearts
-        function createHearts() {
-            const container = document.getElementById('hearts-container');
-            const heartTypes = ['❤️', '💖', '✨', '🌸', '💕'];
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-                container.appendChild(heart);
-
-                setTimeout(() => { heart.remove(); }, 7000);
-            }, 400);
+        // Falling Hearts Animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
         }
-        createHearts();
-
-        // Screen 1 to Screen 2 Transition
-        function goToScreen2() {
-            // Play background music
-            const music = document.getElementById('bg-music');
-            music.play().catch(e => console.log("Audio play blocked until user interact"));
-
-            document.getElementById('screen-1').classList.remove('active');
-            document.getElementById('screen-2').classList.add('active');
-
-            // Start typewriter effect
-            startTypewriter();
-        }
-
-        // Typewriter Effect
-        function startTypewriter() {
-            const element = document.getElementById('typewriter-text');
-            let i = 0;
-            function type() {
-                if (i < message.length) {
-                    // Convert line breaks perfectly
-                    if (message.charAt(i) === '\n') {
-                        element.innerHTML += '<br>';
-                    } else {
-                        element.innerHTML += message.charAt(i);
-                    }
-                    i++;
-                    setTimeout(type, 45); // Speed of typing (in milliseconds)
-                } else {
-                    // Show next button when text finishes
-                    document.getElementById('next-btn').style.display = 'inline-block';
-                }
-            }
-            type();
-        }
-
-        // Screen 2 to Screen 3 Transition
-        function goToScreen3() {
-            document.getElementById('screen-2').classList.remove('active');
-            document.getElementById('screen-3').classList.add('active');
-
-            // Lower background music volume slightly so she can hear the video audio
-            document.getElementById('bg-music').volume = 0.3;
-        }
-    </script>.heart {
-    position: absolute;
-    top: -10px;
-    color: #ff3366;
-    font-size: 20px;
-    animation: fall linear infinite;
-    pointer-events: none;
-}
-@keyframes fall {
-    to { transform: translateY(100vh); }
-}
-
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.innerHTML = '❤️';
-        heart.className = 'heart';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-    }
-    setInterval(createHeart, 500);
-
-
-</script>
+        setInterval(createHeart, 500);
+    </script>
 </body>
 </html>
